@@ -13,5 +13,5 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -lncurses")
 
 
 
-add_executable(game_ncurses main.c types.h user_input.c user_input.h)
+add_executable(game_ncurses main.c types.h user_input.c user_input.h types.c)
 target_link_libraries(game_ncurses ${CURSES_LIBRARIES})

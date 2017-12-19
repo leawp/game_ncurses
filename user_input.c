@@ -14,7 +14,7 @@ enum Action getUserAction() {
             return LEFT;
         case 'd':
             return RIGHT;
-        case KEY_BTAB:
+        case KEY_BTAB:              // shift+tab
             return SHOW_STATS;
         case 'q':
             return EXIT;

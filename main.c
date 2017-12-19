@@ -11,22 +11,24 @@ int main() {
     curs_set(0); // hide cursor
     timeout(100);
 
-    int xmax;
-    int ymax;
-    getmaxyx(stdscr, ymax, xmax); // returns the size of the terminal
+//    int xmax;
+//    int ymax;
+//    getmaxyx(stdscr, ymax, xmax); // returns the size of the terminal
     enum Action useraction;       // action choice based on user input
-
+    clear();
+//    xmax++;
     while (true) {
-        printw("%d", ymax);
-        printw("%d", xmax);
-        clear();
         useraction = getUserAction();
-        if(useraction == EXIT){
+        if (useraction == EXIT) {
             break;
         }
+        if (useraction == SHOW_STATS) {
+            printw("SHOW_STATS");
+            Objects.value++;
+        }
+        printw(Objects.ENEMY);
+        printw("%d", Objects.value);
 
-        printw("%d", ymax);
-        printw("%d", xmax);
         refresh();
     }
     endwin();
