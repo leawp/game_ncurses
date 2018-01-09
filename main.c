@@ -7,9 +7,9 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 
-
 enum Action useraction;       // action choice based on user input
 WINDOW *world, *stats;
+bool stats_showed = false;
 
 void initCurses() {
     initscr();
@@ -19,14 +19,18 @@ void initCurses() {
     curs_set(0); // hide cursor
     timeout(100);
     clear();
+    refresh();
+    start_color();
+    init_pair(1, COLOR_WHITE, COLOR_BLUE);
 }
 
 int main() {
     initCurses();
-    world = newwin(LINES, COLS, 0, 0);
-    stats = newwin(0, 0, LINES, COLS - COLS / 3);
+    world = stdscr;
+    stats = derwin(stdscr, LINES - 2, COLS / 3, 1, COLS - COLS / 3 - 2);
+    wbkgd(stats, COLOR_PAIR(1));
+    stats_showed = true;
 
-    bool stats_showed = false;
     int x = 1, y = 1;
     while (true) {
         useraction = getUserAction();
@@ -34,12 +38,12 @@ int main() {
             break;
         } else if (useraction == ACTION_SHOW_STATS) {
             if (stats_showed) {
-                wresize(world, LINES, COLS);
-                wresize(stats, 0, 0);
+                delwin(stats);
                 stats_showed = false;
             } else {
-                wresize(world, LINES, COLS - COLS / 3);
-                wresize(stats, LINES, COLS / 3);
+                delwin(stats);
+                stats = derwin(stdscr, LINES - 2, COLS / 3, 1, COLS - COLS / 3 - 2);
+                wbkgd(stats, COLOR_PAIR(1));
                 stats_showed = true;
             }
 
@@ -53,16 +57,18 @@ int main() {
             Player.x -= 1;
         }
 
-        draw_world(world);
+        draw_world(stdscr);
+        if (stats_showed)
+            draw_stats(stats);
 
 
-
-        wclear(stats);
-        box(stats, 0, 0);
-        wrefresh(world);
-        wrefresh(stats);
+        wrefresh(stdscr);
+        if(stats != NULL){
+            wrefresh(stats);
+        }
     }
     endwin();
+    getch();
     return 0;
 }
 
