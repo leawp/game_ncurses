@@ -6,19 +6,19 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 
+
+enum Action useraction;       // action choice based on user input
+WINDOW *world, *stats;
+
 int main() {
-    WINDOW *world, *stats;
     initscr();
     cbreak();
     noecho();
     keypad(stdscr, TRUE); // make keys work
     curs_set(0); // hide cursor
     timeout(100);
-    border(0, 0, 0, 0, 0, 0, 0, 0);
-    enum Action useraction;       // action choice based on user input
     clear();
     world = newwin(LINES, COLS, 0, 0);
-    box(world, 0, 0);
     stats = newwin(0, 0, LINES, COLS - COLS / 3);
 
     bool stats_showed = false;

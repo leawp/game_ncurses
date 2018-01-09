@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="external_terminal" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--geometry=160x51 -- ./game_ncurses" WORKING_DIR="file://$PROJECT_DIR$/cmake-build-debug" PASS_PARENT_ENVS_2="true" PROJECT_NAME="game_ncurses" TARGET_NAME="game_ncurses" CONFIG_NAME="Debug" RUN_PATH="/usr/bin/gnome-terminal">
+    <envs />
+    <method />
+  </configuration>
+</component>
