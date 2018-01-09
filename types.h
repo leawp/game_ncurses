@@ -26,14 +26,7 @@ struct objects {
 };
 extern struct objects Objects; // namespaces!! :D https://stackoverflow.com/a/28535585/1983633
 
-struct player {
-    char *type;
-    int health;
-    int shield;
-    int x;
-    int y;
-};
-extern struct player Player;
+
 
 //struct PointList {
 //    int x;

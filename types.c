@@ -10,11 +10,3 @@ struct objects Objects = {
 
 
 
-struct player Player = {
-        .health = 100,
-        .shield = 50,
-        .type = entity_PLAYER,
-        .x = 1,
-        .y = 1
-};
-

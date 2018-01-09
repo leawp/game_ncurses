@@ -1,7 +1,8 @@
-#include <stdio.h>
 #include <ncurses.h>
 #include "types.h"
 #include "user_input.h"
+#include "draw.h"
+#include "player.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
@@ -10,7 +11,7 @@
 enum Action useraction;       // action choice based on user input
 WINDOW *world, *stats;
 
-int main() {
+void initCurses() {
     initscr();
     cbreak();
     noecho();
@@ -18,6 +19,10 @@ int main() {
     curs_set(0); // hide cursor
     timeout(100);
     clear();
+}
+
+int main() {
+    initCurses();
     world = newwin(LINES, COLS, 0, 0);
     stats = newwin(0, 0, LINES, COLS - COLS / 3);
 
@@ -39,21 +44,18 @@ int main() {
             }
 
         } else if (useraction == ACTION_DOWN) {
-            y += 1;
+            Player.y += 1;
         } else if (useraction == ACTION_UP) {
-            y -= 1;
+            Player.y -= 1;
         } else if (useraction == ACTION_RIGHT) {
-            x += 1;
+            Player.x += 1;
         } else if (useraction == ACTION_LEFT) {
-            x -= 1;
+            Player.x -= 1;
         }
 
-//        printw(Objects.ENEMY);
-//        printw("%d", Objects.value);
+        draw_world(world);
 
-        wclear(world);
-        box(world, 0, 0);
-        mvwaddstr(world, y, x, "XDDD");
+
 
         wclear(stats);
         box(stats, 0, 0);
