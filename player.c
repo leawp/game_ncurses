@@ -3,6 +3,8 @@
 //
 
 #include "player.h"
+#include "types.h"
+
 struct player Player = {
         .health = 100,
         .shield = 50,
