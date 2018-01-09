@@ -6,19 +6,19 @@
 enum Action getUserAction() {
     int ch = getch();
     switch (ch) {
-        case 'w':
-            return UP;
-        case 's':
-            return DOWN;
-        case 'a':
-            return LEFT;
-        case 'd':
-            return RIGHT;
-        case KEY_BTAB:              // shift+tab
-            return SHOW_STATS;
+        case KEY_UP:
+            return ACTION_UP;
+        case KEY_DOWN:
+            return ACTION_DOWN;
+        case KEY_LEFT:
+            return ACTION_LEFT;
+        case KEY_RIGHT:
+            return ACTION_RIGHT;
+        case 'l':              // shift+tab - KEY_BTAB
+            return ACTION_SHOW_STATS;
         case 'q':
-            return EXIT;
+            return ACTION_EXIT;
         default:
-            return SKIP;
+            return ACTION_SKIP;
     }
 }
