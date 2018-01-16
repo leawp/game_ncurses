@@ -7,8 +7,17 @@
 
 struct player Player = {
         .health = 100,
-        .shield = 50,
+        .mana = 50,
+        .shield = 0,
         .type = entity_PLAYER,
         .x = 1,
         .y = 1,
 };
+
+void init_player(){
+    Player.health = 100;
+    Player.mana = 50;
+    Player.shield = 0;
+    Player.x = 1;
+    Player.y = 1;
+}

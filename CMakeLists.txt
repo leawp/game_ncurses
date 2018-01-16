@@ -12,6 +12,6 @@ include_directories( ${CURSES_INCLUDE_DIRS} )
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -lncurses")
 
 
-
-add_executable(game_ncurses main.c types.h user_input.c user_input.h types.c draw.c draw.h player.c player.h)
+configure_file(map.txt map.txt COPYONLY)
+add_executable(game_ncurses main.c types.h user_input.c user_input.h types.c draw.c draw.h player.c player.h map.c map.h)
 target_link_libraries(game_ncurses ${CURSES_LIBRARIES})

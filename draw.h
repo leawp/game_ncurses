@@ -7,7 +7,7 @@
 
 #include <ncurses.h>
 
-void draw_world(WINDOW *win);
+void draw_world(WINDOW *win, char ** map);
 
 void draw_stats(WINDOW *win);
 

@@ -7,6 +7,7 @@
 struct player {
     char *type;
     int health;
+    int mana;
     int shield;
     int x;
     int y;
