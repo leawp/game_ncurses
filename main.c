@@ -123,10 +123,6 @@ int main() {
 
 
         wrefresh(stdscr);
-//        wrefresh(hp);
-//        wrefresh(mana);
-
-
     }
     endwin();
     getch();

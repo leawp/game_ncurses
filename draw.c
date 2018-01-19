@@ -11,7 +11,7 @@
 void draw_world(WINDOW *win, char **map) {
     wclear(win);
     box(win, 0, 0);
-    char *tempstr;
+    char     *tempstr;
     for (int y = 0; y < 20; ++y) {
         for (int x = 0; x < 50; ++x) {
             if (Player.x == x && Player.y == y) {
@@ -19,7 +19,16 @@ void draw_world(WINDOW *win, char **map) {
                     Player.shield += 50;
                     map[y][x] = ' ';
                 } else if (map[y][x] == 'H') {
-                    Player.health = 100;
+                    Player.health += 50;
+                    if (Player.health > 100) {
+                        Player.health = 100;
+                    }
+                    map[y][x] = ' ';
+                } else if (map[y][x] == 'M') {
+                    Player.mana += 50;
+                    if (Player.mana > 100) {
+                        Player.mana = 100;
+                    }
                     map[y][x] = ' ';
                 }
             } else if (map[y][x] == '@') {
