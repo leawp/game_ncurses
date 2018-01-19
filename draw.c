@@ -33,7 +33,7 @@ void draw_world(WINDOW *win, char **map) {
             }
         }
     }
-    mvwprintw(win, Player.y + 2, Player.x + 5, Player.type);
+    mvwaddch(win, Player.y + 2, Player.x + 5, Player.type | COLOR_PAIR(4));
 }
 
 void draw_stats(WINDOW *win) {

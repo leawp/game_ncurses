@@ -9,4 +9,9 @@ struct objects Objects = {
 };
 
 
-
+struct viewport Viewport = {
+        .size_x = 50,
+        .size_y = 20,
+        .offset_x = 0,
+        .offset_y = 0,
+};

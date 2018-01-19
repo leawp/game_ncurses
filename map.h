@@ -6,7 +6,10 @@
 #define GAME_NCURSES_MAP_H
 
 #include <stdio.h>
+#include <string.h>
+#include "types.h"
 
-void load_map(char ** map);
+void map_load(char ** map);
+void map_handle_action(enum Action action, char ** map);
 
 #endif //GAME_NCURSES_MAP_H
